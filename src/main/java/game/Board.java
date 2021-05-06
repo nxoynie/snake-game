@@ -9,6 +9,7 @@ public class Board extends Label {
     private Directions direction;
 
     public Board(int row, int column) {
+        super();
         this.row = row;
         this.column = column;
         food = false;
