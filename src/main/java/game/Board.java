@@ -8,7 +8,7 @@ public class Board extends Label {
     private boolean food;
     private Directions direction;
 
-    public Board(int row, int column) {
+    public Board(int row, int column, boolean b) {
         super();
         this.row = row;
         this.column = column;
