@@ -15,10 +15,11 @@ public class GUI {
 
         List<Board> snake = new ArrayList<>();
 
-        int row, col;
+        int count = 0, row, col;
         for (row = 0; row < board.length; row++) {
             for (col = 0; col < board.length; col++) {
-                board[row][col] = new Board(row, col, (row + col) % 2 == 0);
+                board[row][col] = new Board(row, col, (count + col) % 2 == 0);
+                count++;
                 gridPane.add(board[row][col], row, col);
 
                 if (row == 10 && col >= 10 && col <= 12) {
@@ -57,26 +58,27 @@ public class GUI {
 
         new AnimationTimer() {
             @Override
-            public void idkyet(long currentTime) {
+            public void handle(long currentTime) {
                 if (!input.isEmpty()) {
                     game.changeDirection(Directions.valueOf(input.get(0)));
+                }
+                double neednames = (currentTime - last[0]) / 1000000000.0;
 
-                    double neednames = (currentTime - last[0]) / 1000000000.0;
+                if (neednames >= 0.2) {
+                    last[0] = System.nanoTime();
+                    boolean move = game.theNextMove();
+                    game.newBoardSetUp();
 
-                    if (neednames >= 0.2) {
-                        last[0] = System.nanoTime();
-                        boolean move = game.theNextMove();
-                        game.newBoardSetUp();
-
-                        if (!move) {
-                            gridPane.setDisable(true);
-                            stop();
-                        }
+                    if (!move) {
+                        gridPane.setDisable(true);
+                        stop();
                     }
                 }
-            }.
 
-            start();
+
+            }
+        }.start();
+
         return scene;
-        }
     }
+}
