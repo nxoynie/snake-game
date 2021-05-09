@@ -1,4 +1,4 @@
-package game;
+package model;
 
 import javafx.scene.control.Label;
 

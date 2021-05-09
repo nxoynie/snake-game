@@ -1,4 +1,4 @@
-package game;
+package snakegame;
 
 
 import javafx.application.Application;

@@ -1,8 +1,11 @@
-package game;
+package model;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import model.Board;
+import model.Directions;
+import snakegame.Logic;
 
 import java.util.ArrayList;
 import java.util.List;

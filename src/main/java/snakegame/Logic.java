@@ -1,4 +1,7 @@
-package game;
+package snakegame;
+
+import model.Board;
+import model.Directions;
 
 import java.util.List;
 import java.util.Random;
