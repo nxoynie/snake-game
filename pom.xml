@@ -31,6 +31,13 @@
             <groupId>org.tinylog</groupId>
             <artifactId>tinylog-impl</artifactId>
             <version>${tinylog.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>tinylog-api</artifactId>
+            <version>${tinylog.version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <build>
