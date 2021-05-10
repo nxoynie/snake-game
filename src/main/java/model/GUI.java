@@ -3,9 +3,7 @@ package model;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
-import model.Board;
-import model.Directions;
-import snakegame.Logic;
+import snakegame.SnakeGameController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +39,7 @@ public class GUI {
                 break;
             }
         }
-        Logic game = new Logic(board, snake);
+        SnakeGameController game = new SnakeGameController(board, snake);
         game.newBoardSetUp();
         Scene scene = new Scene(gridPane);
 

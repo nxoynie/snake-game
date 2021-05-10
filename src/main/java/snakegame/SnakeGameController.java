@@ -6,12 +6,12 @@ import model.Directions;
 import java.util.List;
 import java.util.Random;
 
-public class Logic {
+public class SnakeGameController {
     private final Board[][] board;
 
     private final List<Board> snake;
 
-    public Logic(Board[][] board, List<Board> snake) {
+    public SnakeGameController(Board[][] board, List<Board> snake) {
         this.board = board;
         this.snake = snake;
     }
