@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:controller="snakegame.SnakeGameApplication" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="111.0" prefWidth="296.0" spacing="20.0" style="-fx-background-color: rgb(30, 30, 30);" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <Label alignment="CENTER" text="Welcome to Snake" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="Century Gothic" size="20.0" />
+      </font>
+   </Label>
+   <Button alignment="CENTER" mnemonicParsing="false" onAction="#startButtonClicked" style="-fx-background-color: transparent; -fx-border-color: white;" text="Start" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="Century Gothic" size="15.0" />
+      </font>
+   </Button>
+</VBox>
