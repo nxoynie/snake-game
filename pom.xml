@@ -7,7 +7,7 @@
     <artifactId>snake-game</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <description>valami</description>
+    <description>This is a project created for the Software Engineering course of University of Debrecen. </description>
     <developers>
         <developer>
             <name>Csenge Papp</name>

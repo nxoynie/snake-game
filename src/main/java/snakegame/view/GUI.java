@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import snakegame.controller.GameController;
 import snakegame.model.Direction;
-import snakegame.model.Square;
+import snakegame.controller.Square;
 
 import java.util.ArrayList;
 import java.util.List;

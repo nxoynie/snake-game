@@ -1,13 +1,14 @@
-package snakegame.model;
+package snakegame.controller;
 
 import javafx.scene.control.Label;
+import snakegame.model.Direction;
 
 public class Square extends Label {
 
     private final int row;
     private final int column;
 
-    private final boolean white;
+    private final boolean color;
 
     private boolean apple;
 
@@ -15,11 +16,11 @@ public class Square extends Label {
     private Direction direction;
 
 
-    public Square(int row, int column, boolean white) {
+    public Square(int row, int column, boolean color) {
         super();
         this.row = row;
         this.column = column;
-        this.white = white;
+        this.color = color;
         apple = false;
         direction = null;
         setMaxHeight(15);
@@ -36,8 +37,8 @@ public class Square extends Label {
         return column;
     }
 
-    public boolean isWhite() {
-        return white;
+    public boolean isNewSquare() {
+        return color;
     }
 
     public boolean isApple() {

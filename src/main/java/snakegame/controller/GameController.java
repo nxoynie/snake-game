@@ -1,8 +1,12 @@
 package snakegame.controller;
 
+import snakegame.DAO.HighScore;
+import snakegame.DAO.HighScoreDao;
+import snakegame.DAO.Score;
 import snakegame.model.Direction;
-import snakegame.model.Square;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
@@ -14,7 +18,8 @@ public class GameController {
 
     private final Square[][] board;
     private final List<Square> snake;
-
+    private HighScoreController highScoreController = new HighScoreController();
+    public static int score=0;
 
     public GameController(Square[][] board, List<Square> snake) {
         this.board = board;
@@ -139,16 +144,47 @@ public class GameController {
                     return;
                 }
                 if (snake.contains(square)) {
-                    square.setStyle("-fx-background-color: green;");
+                    square.setStyle("-fx-background-color: black;");
                     continue;
                 }
                 if (square.isApple()) {
                     square.setStyle("-fx-background-color: red;");
                     continue;
                 }
-                square.setStyle("-fx-background-color: " + (square.isWhite() ? "rgb(200, 200, 200)" : "rgb(50, 50, 50)") + ";");
+                square.setStyle("-fx-background-color: " + (square.isNewSquare() ? "rgb(0, 176, 88)" : "rgb(0, 176, 88)") + ";");
             }
 
         }
+    }
+    private void highScore(){
+        highScoreController.highscore.setOnAction(event -> {
+            highScoreController.highscore.setVisible(false);
+            highScoreController.listView.setVisible(true);
+            initData(score);
+            highScoreController.refreshTable();
+        });
+    }
+
+    public static void initData(int score) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+        LocalDateTime dateTime = LocalDateTime.now();
+        String formattedDateTime = dateTime.format(formatter);
+
+        Score score1 = new Score(String.valueOf(score), formattedDateTime);
+        HighScoreDao highScoreDao = new HighScoreDao();
+
+        HighScore highScore = new HighScore();
+        highScore = highScoreDao.getHighScores();
+
+        for (Score score2 : highScore.getHighscore()) {
+            if (String.valueOf(score2).equals(score) && dateTime.equals(score2.getDate())) {
+
+            } else {
+
+            }
+        }
+
+        highScoreDao.addScore(score1);
+
     }
 }
