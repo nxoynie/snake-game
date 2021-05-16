@@ -99,6 +99,7 @@ public class GameController {
             nextSquare.setApple(false);
 
             ateTheApple = true;
+            log.info("The snake has eaten an apple.");
         }
         /**
          * Loops through the body of the snake except the tail and moves i body part to the nextSquare.
@@ -127,15 +128,19 @@ public class GameController {
         switch (tail.getDirection()) {
             case UP:
                 nextSquare = board[tail.getRow() - 1][tail.getColumn()];
+                log.info("The snake is going upwards.");
                 break;
             case DOWN:
                 nextSquare = board[tail.getRow() + 1][tail.getColumn()];
+                log.info("The snake is going downwards.");
                 break;
             case RIGHT:
                 nextSquare = board[tail.getRow()][tail.getColumn() + 1];
+                log.info("The snake is going to the right.");
                 break;
             case LEFT:
                 nextSquare = board[tail.getRow()][tail.getColumn() - 1];
+                log.info("The snake is going to the Left.");
                 break;
         }
         /**
@@ -146,6 +151,7 @@ public class GameController {
          * If the snake has eaten then increases the length of the snake by adding to it.
          */
         if (ateTheApple) {
+            log.info("The snake has become bigger.");
             snake.add(tail);
             /**
              * Finds a random place for a new apple.
@@ -159,7 +165,7 @@ public class GameController {
                     board[r][c].setApple(true);
                     break;
                 }
-            }
+            }log.info("Set apple somewhere random.");
         }
         return true;
     }
