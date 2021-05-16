@@ -8,52 +8,71 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
-import snakegame.results.GameResultDao;
 import snakegame.view.GUI;
-import util.guice.PersistenceModule;
+
 
 import javax.inject.Inject;
 import java.io.IOException;
-import java.util.List;
+
+/**
+ * This class is building the welcome Menu and then calls for GUI class which builds the graphical interface.
+ */
+
 @Slf4j
 public class SnakeGameApplication extends Application {
-    private GuiceContext context = new GuiceContext(this, () -> List.of(
-            new AbstractModule() {
-                @Override
-                protected void configure() {
-                    install(new PersistenceModule("snake-game"));
-                    bind(GameResultDao.class);
-                }
-            }
-    ));
     @Inject
     private FXMLLoader fxmlLoader;
+
+    /**
+     * Adds a title to the game, creates root from FXML file and creates a Scenes using that as the Scene for the Stage, then shows it to the User.
+     * @param stage Stage set up.
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         log.info("Starting application...");
-        context.init();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/game.fxml"));
         stage.setTitle("Snake Game");
+
         stage.setScene(new Scene(root));
 
         stage.show();
     }
 
     @FXML
-    private void startButtonClicked(ActionEvent actionEvent) {
-        Node source = (Node) (actionEvent.getSource());
+    private TextField playerNameTextField;
+
+    @FXML
+    private Label errorLabel;
+
+    /**
+     * After the User gives a player name and presses the Start Button, calls the GUI class and the game begins.
+     * @param actionEvent Action after pressing the Start Button.
+     * @throws IOException
+     */
+    @FXML
+    private void startButtonClicked(ActionEvent actionEvent) throws IOException {
+        if (playerNameTextField.getText().isEmpty()) {
+            errorLabel.setText("Enter your name!");
+        } else {
+            Node source = (Node) (actionEvent.getSource());
 
 
-        Stage stage = (Stage) (source.getScene().getWindow());
+            Stage stage = (Stage) (source.getScene().getWindow());
 
 
-        stage.setScene(GUI.getGameScene());
+            stage.setScene(GUI.getGameScene());
+            log.info("The players name is set to {}, loading game scene", playerNameTextField.getText());
+        }
     }
 
-    public static void main(String[] args) {
-        launch(args);
+        public static void main (String[]args){
+            launch(args);
+        }
+
     }
 
-}

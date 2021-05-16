@@ -1,21 +1,34 @@
-package snakegame.controller;
-
+package snakegame.model;
 import javafx.scene.control.Label;
 import snakegame.model.Direction;
 
+/**
+ * The Square class defines {@link Label} with the specified size.
+ */
 public class Square extends Label {
-
+    /**
+     * Stores the Square's location in the 2D array.
+     */
     private final int row;
     private final int column;
 
     private final boolean color;
-
+    /**
+     * Determines if a square is an apple square or not.
+     */
     private boolean apple;
 
-
+    /**
+     * The direction where the snake body should go it's on this particular square.
+     */
     private Direction direction;
 
-
+    /**
+     * Constructor of the Square class.
+     * @param row
+     * @param column
+     * @param color
+     */
     public Square(int row, int column, boolean color) {
         super();
         this.row = row;

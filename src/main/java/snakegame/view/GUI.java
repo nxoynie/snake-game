@@ -2,28 +2,37 @@ package snakegame.view;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import lombok.SneakyThrows;
 import snakegame.controller.GameController;
 import snakegame.model.Direction;
-import snakegame.controller.Square;
+import snakegame.model.Square;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This is the Graphical User Interface Class responsible for building the game board for the user.
+ */
 public class GUI {
+    @SneakyThrows
     public static Scene getGameScene() {
-
+        /**
+         * The board stored in GridPane and a 2D array.
+         */
         GridPane grid = new GridPane();
-        Square[][] board = new Square[30][30];
+        Square[][] board = new Square[40][40];
 
 
+        /**
+         * Identifying the squares on which the snake is at.
+         */
         List<Square> snake = new ArrayList<>();
 
-
+        /**
+         * Loops through the board and initializes the squares.
+         */
         int count = 0, i, j;
         for (i = 0; i < board.length; i++) {
             for (j = 0; j < board[0].length; j++) {
@@ -31,7 +40,9 @@ public class GUI {
                 count++;
                 grid.add(board[i][j], j, i);
 
-
+                /**
+                 * Sets the snakes starting direction to be RIGHT.
+                 */
                 if (i == 10 && j >= 10 && j <= 12) {
                     board[i][j].setDirection(Direction.RIGHT);
                     snake.add(0, board[i][j]);
@@ -39,7 +50,9 @@ public class GUI {
             }
         }
 
-
+        /**
+         * Place the apple somewhere random on the board.
+         */
         Random random = new Random();
         int r, c;
         while (true) {
@@ -51,7 +64,9 @@ public class GUI {
             }
         }
 
-
+        /**
+         * Creates an instance of the GameController and passes it the board and the list of the snake body parts.
+         */
         GameController snakeGame = new GameController(board, snake);
 
 
@@ -63,7 +78,9 @@ public class GUI {
 
         List<String> input = new ArrayList<>();
 
-
+        /**
+         * Gets the inputs to store from the game scene.
+         */
         scene.setOnKeyPressed(keyEvent -> {
             String code = keyEvent.getCode().toString();
             if (input.size() == 0) {
@@ -78,12 +95,16 @@ public class GUI {
 
         final long[] lastTime = {System.nanoTime()};
 
-
+        /**
+         * The game loop.
+         */
         new AnimationTimer() {
             @Override
             public void handle(long currentTime) {
 
-
+                /**
+                 * Changes the direction if the user requested it through a key press.
+                 */
                 if (input.size() != 0) {
                     snakeGame.changeDirection(Direction.valueOf(input.get(0)));
                 }
