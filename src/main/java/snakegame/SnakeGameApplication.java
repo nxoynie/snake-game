@@ -12,6 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
+import snakegame.Dao.HighScore;
+import snakegame.Dao.HighScoreDao;
+import snakegame.Dao.Score;
 import snakegame.view.GUI;
 
 
@@ -49,6 +52,23 @@ public class SnakeGameApplication extends Application {
     @FXML
     private Label errorLabel;
 
+    @FXML
+    private Label highscoreLabel;
+
+    @FXML
+    private void showHighscore(){
+        HighScoreDao highScoreDao = new HighScoreDao();
+        HighScore hs = new HighScore();
+        hs = highScoreDao.getHighScores();
+        String highscoretext = "";
+        for(Score sc : hs.getHighscore()){
+            String text = sc.getName() + " : " + sc.getScore() + "\n";
+            highscoretext += text;
+        }
+        highscoreLabel.setText(highscoretext);
+        highscoreLabel.setVisible(true);
+    }
+
     /**
      * After the User gives a player name and presses the Start Button, calls the GUI class and the game begins.
      * @param actionEvent Action after pressing the Start Button.
@@ -65,12 +85,13 @@ public class SnakeGameApplication extends Application {
             Stage stage = (Stage) (source.getScene().getWindow());
 
 
-            stage.setScene(GUI.getGameScene());
+            stage.setScene(GUI.getGameScene(playerNameTextField.getText()));
             log.info("The players name is set to {}, loading game scene", playerNameTextField.getText());
         }
     }
 
         public static void main (String[]args){
+        log.info("The game has started.");
             launch(args);
         }
 

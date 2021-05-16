@@ -4,6 +4,8 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import lombok.SneakyThrows;
+import snakegame.Dao.HighScoreDao;
+import snakegame.Dao.Score;
 import snakegame.controller.GameController;
 import snakegame.model.Direction;
 import snakegame.model.Square;
@@ -17,7 +19,7 @@ import java.util.Random;
  */
 public class GUI {
     @SneakyThrows
-    public static Scene getGameScene() {
+    public static Scene getGameScene(String playername) {
         /**
          * The board stored in GridPane and a 2D array.
          */
@@ -126,6 +128,10 @@ public class GUI {
 
                     if (!move) {
                         grid.setDisable(true);
+                        System.out.println(playername +" scored: " + snakeGame.getScore());
+                        Score newScore = new Score(playername, String.valueOf(snakeGame.getScore()));
+                        HighScoreDao highScoreDao = new HighScoreDao();
+                        highScoreDao.addScore(newScore);
                         stop();
                     }
                 }

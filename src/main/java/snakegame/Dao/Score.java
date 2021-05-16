@@ -13,27 +13,36 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Score {
     private SimpleStringProperty score;
-    private SimpleStringProperty date;
+    private SimpleStringProperty name;
 
     /**
      * Creates an empty instance of Score.
      */
     public Score() {
         this.score = new SimpleStringProperty();
-        this.date = new SimpleStringProperty();
+        this.name = new SimpleStringProperty();
     }
 
     /**
      * Creates a new instance of Score with a specified score and date.
      *
      * @param score The achieved score.
-     * @param date The actual date.
+     * @param name The actual date.
      */
-    public Score(String score, String date) {
+    public Score(String score, String name) {
         this.score = new SimpleStringProperty();
-        this.date = new SimpleStringProperty();
-        this.score.set(score);
-        this.date.set(date);
+        this.name = new SimpleStringProperty();
+        this.score.set(name);
+        this.name.set(score);
+    }
+
+    /**
+     * Get the name.
+     *
+     * @return Name.
+     */
+    public String getName() {
+        return name.get();
     }
 
     /**
@@ -43,6 +52,16 @@ public class Score {
      */
     public String getScore() {
         return score.get();
+    }
+
+
+    /**
+     * Set the name.
+     * @param name Name.
+     */
+    @XmlElement
+    public void setName(String name) {
+        this.name.set(name);
     }
 
     /**
@@ -55,30 +74,11 @@ public class Score {
         this.score.set(score);
     }
 
-    /**
-     * Get the date.
-     *
-     * @return Date.
-     */
-    public String getDate() {
-        return date.get();
-    }
-
-    /**
-     * Set the date.
-     *
-     * @param date Date.
-     */
-    @XmlElement
-    public void setDate(String date) {
-        this.date.set(date);
-    }
-
     @Override
     public String toString() {
         return "Score{" +
-                "score=" + score +
-                ", date=" + date +
+                "name=" + name +
+                ", score=" + score +
                 '}';
     }
 }

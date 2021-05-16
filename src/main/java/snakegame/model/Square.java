@@ -25,9 +25,9 @@ public class Square extends Label {
 
     /**
      * Constructor of the Square class.
-     * @param row
-     * @param column
-     * @param color
+     * @param row row
+     * @param column column
+     * @param color color
      */
     public Square(int row, int column, boolean color) {
         super();

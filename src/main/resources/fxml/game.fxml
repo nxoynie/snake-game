@@ -27,4 +27,14 @@
       </font>
       <Label fx:id="errorLabel" layoutX="223.0" layoutY="200.0" prefHeight="16.0" prefWidth="151.0" textFill="#e30e0e"/>
    </Button>
+   <Button layoutX="115.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#showHighscore" prefHeight="43.0" prefWidth="177.0" style="-fx-background-color: crimson; -fx-border-color: black; -fx-border-width: 2px;" text="HIGHSCORE" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
+   <Label fx:id="highscoreLabel" alignment="CENTER" layoutX="50.0" layoutY="400.0" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: antiquewhite; -fx-border-color: darksalmon; -fx-border-width: 3px;" text="Rule Rule rule Rule" visible="false">
+      <font>
+         <Font size="19.0" />
+      </font>
+   </Label>
 </VBox>

@@ -22,7 +22,7 @@ public class GameController {
      * List of squares where the snake is currently at. The square at index 0 is always the head, and snake.size()-1 is always the tail.
      */
     private final List<Square> snake;
-
+    private int score = 0;
     /**
      * Constructor of this class.
      * @param board board
@@ -31,6 +31,21 @@ public class GameController {
     public GameController(Square[][] board, List<Square> snake) {
         this.board = board;
         this.snake = snake;
+    }
+    /**
+     * Increase the score by amount
+     * @param amount amount
+     */
+    public void setScore(int amount){
+        this.score =+ amount;
+    }
+
+    /**
+     * Returns the game's score
+     * @return score
+     */
+    public int getScore(){
+        return this.score;
     }
 
     /**
@@ -49,7 +64,7 @@ public class GameController {
 
     /**
      * This method increments the games by performing the next move.
-     * @return Return true is the move was correct, otherwise gameover.
+     * @return Return true is the move was correct, otherwise game over.
      */
     public boolean nextMove() {
         /**
@@ -97,6 +112,7 @@ public class GameController {
         if (nextSquare.isApple()) {
 
             nextSquare.setApple(false);
+            this.setScore(1);
 
             ateTheApple = true;
             log.info("The snake has eaten an apple.");
