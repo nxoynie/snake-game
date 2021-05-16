@@ -2,7 +2,10 @@ package snakegame.view;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import snakegame.controller.GameController;
 import snakegame.model.Direction;
 import snakegame.controller.Square;
@@ -14,10 +17,7 @@ import java.util.Random;
 public class GUI {
     public static Scene getGameScene() {
 
-
         GridPane grid = new GridPane();
-
-
         Square[][] board = new Square[30][30];
 
 
@@ -112,5 +112,8 @@ public class GUI {
         }.start();
 
         return scene;
+
     }
+
+
 }

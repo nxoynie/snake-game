@@ -1,8 +1,5 @@
 package snakegame.controller;
 
-import snakegame.DAO.HighScore;
-import snakegame.DAO.HighScoreDao;
-import snakegame.DAO.Score;
 import snakegame.model.Direction;
 
 import java.time.LocalDateTime;
@@ -18,7 +15,6 @@ public class GameController {
 
     private final Square[][] board;
     private final List<Square> snake;
-    private HighScoreController highScoreController = new HighScoreController();
     public static int score=0;
 
     public GameController(Square[][] board, List<Square> snake) {
@@ -156,35 +152,5 @@ public class GameController {
 
         }
     }
-    private void highScore(){
-        highScoreController.highscore.setOnAction(event -> {
-            highScoreController.highscore.setVisible(false);
-            highScoreController.listView.setVisible(true);
-            initData(score);
-            highScoreController.refreshTable();
-        });
-    }
 
-    public static void initData(int score) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
-        LocalDateTime dateTime = LocalDateTime.now();
-        String formattedDateTime = dateTime.format(formatter);
-
-        Score score1 = new Score(String.valueOf(score), formattedDateTime);
-        HighScoreDao highScoreDao = new HighScoreDao();
-
-        HighScore highScore = new HighScore();
-        highScore = highScoreDao.getHighScores();
-
-        for (Score score2 : highScore.getHighscore()) {
-            if (String.valueOf(score2).equals(score) && dateTime.equals(score2.getDate())) {
-
-            } else {
-
-            }
-        }
-
-        highScoreDao.addScore(score1);
-
-    }
 }
