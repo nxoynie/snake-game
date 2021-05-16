@@ -5,7 +5,8 @@ This project is a Simple Snake game for the Software Engineering course of Unive
 To play the game you have to clone it to your computer then:  
  ~ give out 'mvn clean install' and 'mvn exec:java' command  
  or  
-~ run the JAR file generated in the project
+~ run the JAR file generated in the project  
+You can move the snake by pressing the arrow keys.
 
 # Have fun playing ! :)
                                                             
