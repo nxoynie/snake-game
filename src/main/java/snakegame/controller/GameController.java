@@ -1,22 +1,12 @@
 package snakegame.controller;
 
-import javafx.animation.Timeline;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 import lombok.extern.slf4j.Slf4j;
 import snakegame.model.Direction;
 import snakegame.model.Square;
 
-import javax.inject.Inject;
-import java.time.Instant;
 import java.util.List;
 import java.util.Random;
+
 import static snakegame.model.Direction.*;
 
 /**
@@ -76,30 +66,30 @@ public class GameController {
          * itself then returns false and game over, otherwise instantiates the nextSquare and sets is to the the head.
          */
         switch (snake.get(0).getDirection()) {
-            case UP -> {
+            case UP:
                 if (row == 0 || snake.contains(board[row - 1][column])) return false;
                 nextSquare = board[row - 1][column];
                 nextSquare.setDirection(snake.get(0).getDirection());
                 snake.set(0, nextSquare);
-            }
-            case DOWN -> {
+                break;
+            case DOWN:
                 if (row == board.length - 1 || snake.contains(board[row + 1][column])) return false;
                 nextSquare = board[row + 1][column];
                 nextSquare.setDirection(snake.get(0).getDirection());
                 snake.set(0, nextSquare);
-            }
-            case RIGHT -> {
+                break;
+            case RIGHT:
                 if (column == board[0].length - 1 || snake.contains(board[row][column + 1])) return false;
                 nextSquare = board[row][column + 1];
                 nextSquare.setDirection(snake.get(0).getDirection());
                 snake.set(0, nextSquare);
-            }
-            case LEFT -> {
+                break;
+            case LEFT:
                 if (column == 0 || snake.contains(board[row][column - 1])) return false;
                 nextSquare = board[row][column - 1];
                 nextSquare.setDirection(snake.get(0).getDirection());
                 snake.set(0, nextSquare);
-            }
+                break;
         }
         /**
          * If the nextSquare is an apple the snake ate it so it sets the ateTheApple boolean to be true.
