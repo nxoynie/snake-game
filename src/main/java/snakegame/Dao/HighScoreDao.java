@@ -10,6 +10,9 @@ import java.io.*;
  * The HighScoreDAO implements the methods to read and white XML file.
  */
 public class HighScoreDao {
+    /**
+     * Gives the xml name as path where the scores will be saved.
+     */
     public String path ="highscore.xml";
     /**
      * Add to score to XML file.

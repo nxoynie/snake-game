@@ -90,6 +90,10 @@ public class SnakeGameApplication extends Application {
         }
     }
 
+    /**
+     * After the user gave a name, and pressed START the game is launching.
+     * @param args
+     */
         public static void main (String[]args){
         log.info("The game has started.");
             launch(args);

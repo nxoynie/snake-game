@@ -18,6 +18,11 @@ import java.util.Random;
  * This is the Graphical User Interface Class responsible for building the game board for the user.
  */
 public class GUI {
+    /**
+     * Getter for the GameScene.
+     * @param playername
+     * @return scene
+     */
     @SneakyThrows
     public static Scene getGameScene(String playername) {
         /**

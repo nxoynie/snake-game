@@ -33,7 +33,7 @@ public class GameController {
         this.snake = snake;
     }
     /**
-     * Increase the score by amount
+     * Increase the score by amount.
      * @param amount amount
      */
     public void setScore(int amount){
@@ -41,7 +41,7 @@ public class GameController {
     }
 
     /**
-     * Returns the game's score
+     * Returns the game's score.
      * @return score
      */
     public int getScore(){
@@ -112,7 +112,7 @@ public class GameController {
         if (nextSquare.isApple()) {
 
             nextSquare.setApple(false);
-            this.setScore(1);
+            this.setScore(score+1);
 
             ateTheApple = true;
             log.info("The snake has eaten an apple.");

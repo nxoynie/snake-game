@@ -42,30 +42,58 @@ public class Square extends Label {
         setMinHeight(15);
     }
 
+    /**
+     * A getter for rows.
+     * @return row
+     */
     public int getRow() {
         return row;
     }
 
+    /**
+     * A getter for columns.
+     * @return column
+     */
     public int getColumn() {
         return column;
     }
 
+    /**
+     * If the given square is a new square returns the colour of it.
+     * @return color
+     */
     public boolean isNewSquare() {
         return color;
     }
 
+    /**
+     * Boolean to see if the up coming square is an apple.
+     * @return apple
+     */
     public boolean isApple() {
         return apple;
     }
 
+    /**
+     * Setter for the apple.
+     * @param apple
+     */
     public void setApple(boolean apple) {
         this.apple = apple;
     }
 
+    /**
+     * Getter for the direction.
+     * @return direction
+     */
     public Direction getDirection() {
         return direction;
     }
 
+    /**
+     * Setter for direction.
+     * @param direction
+     */
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
