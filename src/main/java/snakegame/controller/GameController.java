@@ -1,10 +1,12 @@
 package snakegame.controller;
-
+import org.apache.commons.lang3.StringUtils;
+import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import snakegame.model.Direction;
 import snakegame.model.Square;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import static snakegame.model.Direction.*;
@@ -17,11 +19,11 @@ public class GameController {
     /**
      * The game board.
      */
-    private final Square[][] board;
+    public final Square[][] board;
     /**
      * List of squares where the snake is currently at. The square at index 0 is always the head, and snake.size()-1 is always the tail.
      */
-    private final List<Square> snake;
+    public final List<Square> snake;
     private int score = 0;
     /**
      * Constructor of this class.
