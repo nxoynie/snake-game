@@ -19,9 +19,12 @@ class GameControllerTest extends ApplicationTest {
 
     GameController gameController;
 
+    /**
+     * Initializes JavaFX.
+     * @throws InterruptedException
+     */
     @BeforeAll
     public static void setUpClass() throws InterruptedException {
-        // Initialise Java FX
 
         Thread t = new Thread("JavaFX Init Thread") {
             public void run() {
@@ -33,6 +36,9 @@ class GameControllerTest extends ApplicationTest {
         Thread.sleep(500);
     }
 
+    /**
+     * Initializes the board, the snake, and a new GameController.
+     */
     @BeforeEach
     public void initialize(){
         Square[][] board = new Square[40][40];
@@ -54,50 +60,77 @@ class GameControllerTest extends ApplicationTest {
         gameController = new GameController(board, snake);
     }
 
+    /**
+     * Tests if the gameController is null or not.
+     */
     @Test
     public void testGameController(){
         assertNotNull(gameController);
     }
 
+    /**
+     * Tests if the board is null or not.
+     */
     @Test
     public void testBoard(){
         assertNotNull(gameController.board);
     }
 
+    /**
+     * Tests if the snake is null or not.
+     */
     @Test
     public void testSnake(){
         assertNotNull(gameController.snake);
     }
 
+    /**
+     * Test for {@link getScore()} proper working.
+     */
     @Test
     public void testGetScore(){
         assertEquals(0, gameController.getScore() );
     }
 
+    /**
+     * Test for {@link setScore()} proper working.
+     */
     @Test
     public void testSetScore(){
         gameController.setScore(10);
         assertEquals(10, gameController.getScore());
     }
 
+    /**
+     * Tests if changing the direction to DOWN works as it is intended.
+     */
     @Test
     public void testChangeDirectionDown(){
         gameController.snake.add(new Square(3,3, true));
         gameController.changeDirection(DOWN);
         assertEquals(DOWN, gameController.snake.get(0).getDirection());
     }
+    /**
+     * Tests if changing the direction to UP works as it is intended.
+     */
     @Test
     public void testChangeDirectionUp(){
         gameController.snake.add(new Square(3,3, true));
         gameController.changeDirection(UP);
         assertEquals(UP, gameController.snake.get(0).getDirection());
     }
+    /**
+     * Tests if changing the direction to RIGHT works as it is intended.
+     */
     @Test
     public void testChangeDirectionRight(){
         gameController.snake.add(new Square(3,3, true));
         gameController.changeDirection(RIGHT);
         assertEquals(RIGHT, gameController.snake.get(0).getDirection());
     }
+    /**
+     * Tests if changing the direction to LEFT works as it is intended.
+     */
     @Test
     public void testChangeDirectionLeft(){
         gameController.snake.add(new Square(3,3, true));
@@ -105,7 +138,9 @@ class GameControllerTest extends ApplicationTest {
         assertNotEquals(LEFT, gameController.snake.get(0).getDirection());
     }
 
-
+    /**
+     * Test for a possible wrong choice of movement.
+     */
     @Test
     public void testNoNextMove() {
         gameController.snake.clear();
@@ -115,6 +150,9 @@ class GameControllerTest extends ApplicationTest {
         assertEquals(false, gameController.nextMove());
     }
 
+    /**
+     * Test for a possible right choice of movement.
+     */
     @Test
     public void testHasNextMove(){
         gameController.snake.clear();

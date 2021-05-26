@@ -41,11 +41,11 @@ public class Square extends Label {
         setMinWidth(15);
         setMinHeight(15);
     }
-    // TODO normális dokumentáció
     /**
-     * Constructor for test cases
+     * Constructor for test cases. This constructor was needed because of {@link direction} is declared as null originally.
+     *  This caused problems while testing {@link nextMove()}.
      * @param row row
-     * @param column col
+     * @param column column
      * @param color color
      * @param dir direction
      */
