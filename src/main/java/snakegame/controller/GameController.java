@@ -1,12 +1,10 @@
 package snakegame.controller;
-import org.apache.commons.lang3.StringUtils;
-import java.util.Optional;
+
 import lombok.extern.slf4j.Slf4j;
 import snakegame.model.Direction;
 import snakegame.model.Square;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 import static snakegame.model.Direction.*;

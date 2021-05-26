@@ -1,18 +1,14 @@
 package snakegame.controller;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.scene.Scene;
-import org.junit.jupiter.api.BeforeAll;
 
+import javafx.application.Application;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-
 import org.testfx.framework.junit.ApplicationTest;
 import snakegame.SnakeGameApplication;
 import snakegame.model.Direction;
 import snakegame.model.Square;
-import javax.swing.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,10 +32,25 @@ class GameControllerTest extends ApplicationTest {
         t.start();
         Thread.sleep(500);
     }
+
     @BeforeEach
     public void initialize(){
         Square[][] board = new Square[40][40];
         List<Square> snake = new ArrayList<>();
+
+        int count = 0, i, j;
+        for (i = 0; i < board.length; i++) {
+            for (j = 0; j < board[0].length; j++) {
+                board[i][j] = new Square(i, j, (i + count) % 2 == 0);
+                count++;
+
+                if (i == 10 && j >= 10 && j <= 12) {
+                    board[i][j].setDirection(Direction.RIGHT);
+                    snake.add(0, board[i][j]);
+                }
+            }
+        }
+
         gameController = new GameController(board, snake);
     }
 
@@ -91,25 +102,27 @@ class GameControllerTest extends ApplicationTest {
     public void testChangeDirectionLeft(){
         gameController.snake.add(new Square(3,3, true));
         gameController.changeDirection(LEFT);
-        assertEquals(LEFT, gameController.snake.get(0).getDirection());
+        assertNotEquals(LEFT, gameController.snake.get(0).getDirection());
     }
 
 
-   /* @Test
+    @Test
     public void testNoNextMove() {
-        gameController.snake.add(new Square(0,3,true));
-        gameController.snake.add(new Square(1,3,true));
+        gameController.snake.clear();
+        gameController.snake.add(new Square(0,0,true, LEFT));
+        gameController.snake.add(new Square(0,1,true, LEFT));
         gameController.changeDirection(LEFT);
         assertEquals(false, gameController.nextMove());
     }
 
     @Test
     public void testHasNextMove(){
-        gameController.snake.add(new Square(3,3,true));
-        gameController.snake.add(new Square(3,4,true));
-        gameController.changeDirection(DOWN);
+        gameController.snake.clear();
+        gameController.snake.add(new Square(20, 20,true, RIGHT));
+        gameController.snake.add(new Square(20,19,true, RIGHT));
+        gameController.snake.add(new Square(20,18,true, RIGHT));
         assertEquals(true, gameController.nextMove());
-    }*/
+    }
 
 
 }

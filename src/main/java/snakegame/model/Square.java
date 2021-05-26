@@ -41,6 +41,26 @@ public class Square extends Label {
         setMinWidth(15);
         setMinHeight(15);
     }
+    // TODO normális dokumentáció
+    /**
+     * Constructor for test cases
+     * @param row row
+     * @param column col
+     * @param color color
+     * @param dir direction
+     */
+    public Square(int row, int column, boolean color, Direction dir) {
+        super();
+        this.row = row;
+        this.column = column;
+        this.color = color;
+        apple = false;
+        direction = dir;
+        setMaxHeight(15);
+        setMaxWidth(15);
+        setMinWidth(15);
+        setMinHeight(15);
+    }
 
     /**
      * A getter for rows.
