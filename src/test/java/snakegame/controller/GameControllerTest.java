@@ -21,7 +21,7 @@ class GameControllerTest extends ApplicationTest {
 
     /**
      * Initializes JavaFX.
-     * @throws InterruptedException
+     * @throws InterruptedException interrupted exception
      */
     @BeforeAll
     public static void setUpClass() throws InterruptedException {

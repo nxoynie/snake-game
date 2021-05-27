@@ -33,7 +33,7 @@ public class SnakeGameApplication extends Application {
     /**
      * Adds a title to the game, creates root from FXML file and creates a Scenes using that as the Scene for the Stage, then shows it to the User.
      * @param stage Stage set up.
-     * @throws IOException
+     * @throws IOException IOException
      */
     @Override
     public void start(Stage stage) throws IOException {
@@ -72,7 +72,7 @@ public class SnakeGameApplication extends Application {
     /**
      * After the User gives a player name and presses the Start Button, calls the GUI class and the game begins.
      * @param actionEvent Action after pressing the Start Button.
-     * @throws IOException
+     * @throws IOException IOException
      */
     @FXML
     private void startButtonClicked(ActionEvent actionEvent) throws IOException {
@@ -92,7 +92,7 @@ public class SnakeGameApplication extends Application {
 
     /**
      * After the user gave a name, and pressed START the game is launching.
-     * @param args
+     * @param args args
      */
         public static void main (String[]args){
         log.info("The game has started.");

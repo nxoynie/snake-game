@@ -4,7 +4,22 @@ package snakegame.model;
  */
 public enum Direction {
     /**
-     * The snake can only go UP, DOWN, RIGHT or LEFT.
+     * The directions where the snake can go.
      */
-    UP, DOWN, RIGHT, LEFT
+    /**
+     * UP
+     */
+    UP,
+    /**
+     * DOWN
+     */
+    DOWN,
+    /**
+     * RIGHT
+     */
+    RIGHT,
+    /**
+     * LEFT
+     */
+    LEFT
 }

@@ -1,5 +1,6 @@
 package snakegame.model;
 import javafx.scene.control.Label;
+import snakegame.controller.GameController;
 import snakegame.model.Direction;
 
 /**
@@ -43,7 +44,7 @@ public class Square extends Label {
     }
     /**
      * Constructor for test cases. This constructor was needed because of {@link direction} is declared as null originally.
-     *  This caused problems while testing {@link nextMove()}.
+     *  This caused problems while testing {@link GameController#nextMove()}.
      * @param row row
      * @param column column
      * @param color color
@@ -96,7 +97,7 @@ public class Square extends Label {
 
     /**
      * Setter for the apple.
-     * @param apple
+     * @param apple apple
      */
     public void setApple(boolean apple) {
         this.apple = apple;
@@ -112,7 +113,7 @@ public class Square extends Label {
 
     /**
      * Setter for direction.
-     * @param direction
+     * @param direction direction
      */
     public void setDirection(Direction direction) {
         this.direction = direction;

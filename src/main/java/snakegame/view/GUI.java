@@ -20,7 +20,7 @@ import java.util.Random;
 public class  GUI {
     /**
      * Getter for the GameScene.
-     * @param playername
+     * @param playername playername
      * @return scene
      */
     @SneakyThrows
