@@ -6,20 +6,20 @@ public enum Direction {
     /**
      * The directions where the snake can go.
      */
-    /**
-     * UP
+    /** UP.
+     *
      */
     UP,
-    /**
-     * DOWN
+    /** DOWN.
+     *
      */
     DOWN,
-    /**
-     * RIGHT
+    /** RIGHT.
+     *
      */
     RIGHT,
-    /**
-     * LEFT
+    /** LEFT.
+     *
      */
     LEFT
 }

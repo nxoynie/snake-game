@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import lombok.extern.slf4j.Slf4j;
 import snakegame.Dao.HighScore;
 import snakegame.Dao.HighScoreDao;
@@ -29,6 +30,10 @@ import java.io.IOException;
 public class SnakeGameApplication extends Application {
     @Inject
     private FXMLLoader fxmlLoader;
+    /**
+     * Window for file saving.
+     */
+    public static Window window;
 
     /**
      * Adds a title to the game, creates root from FXML file and creates a Scenes using that as the Scene for the Stage, then shows it to the User.
@@ -59,7 +64,7 @@ public class SnakeGameApplication extends Application {
     private void showHighscore(){
         HighScoreDao highScoreDao = new HighScoreDao();
         HighScore hs = new HighScore();
-        hs = highScoreDao.getHighScores();
+        hs = highScoreDao.getHighScores(SnakeGameApplication.window);
         String highscoretext = "";
         for(Score sc : hs.getHighscore()){
             String text = sc.getName() + " : " + sc.getScore() + "\n";
@@ -89,6 +94,7 @@ public class SnakeGameApplication extends Application {
             log.info("The players name is set to {}, loading game scene", playerNameTextField.getText());
         }
     }
+
 
     /**
      * After the user gave a name, and pressed START the game is launching.

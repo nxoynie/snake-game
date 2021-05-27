@@ -6,6 +6,7 @@ import javafx.scene.layout.GridPane;
 import lombok.SneakyThrows;
 import snakegame.Dao.HighScoreDao;
 import snakegame.Dao.Score;
+import snakegame.SnakeGameApplication;
 import snakegame.controller.GameController;
 import snakegame.model.Direction;
 import snakegame.model.Square;
@@ -136,7 +137,7 @@ public class  GUI {
                         System.out.println(playername +" scored: " + snakeGame.getScore());
                         Score newScore = new Score(playername, String.valueOf(snakeGame.getScore()));
                         HighScoreDao highScoreDao = new HighScoreDao();
-                        highScoreDao.addScore(newScore);
+                        highScoreDao.addScore(newScore, SnakeGameApplication.window);
                         stop();
                     }
                 }
